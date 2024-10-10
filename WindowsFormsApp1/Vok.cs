@@ -11,15 +11,14 @@ namespace WindowsFormsApp1
         public string Begriff { get; set; }
         public string Defintion { get; set; }
 
-        public int Anz_Richtig_Falsch { get; set; }
-        public string path1{ get ; set; }   
+        public int Punkt_Def { get; set; }
+        public int Punkt_Beg { get; set; }
+        public int Punkt_Mix { get; set; }
+        public string Leer{ get ; set; }   
  
 
 
-        public void Falsch()
-        {
-            Anz_Richtig_Falsch -= 1;
-        }
+    
 
     }
 }

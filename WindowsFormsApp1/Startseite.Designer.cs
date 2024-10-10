@@ -28,159 +28,174 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Begriff = new System.Windows.Forms.Button();
-            this.Definition = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Schreibmodus = new System.Windows.Forms.Button();
-            this.Lernmodus = new System.Windows.Forms.Button();
-            this.gemischt = new System.Windows.Forms.Button();
-            this.comboBox_Ordner = new System.Windows.Forms.ComboBox();
-            this.comboBox_Lernset = new System.Windows.Forms.ComboBox();
+            this.btn_Begriff = new System.Windows.Forms.Button();
+            this.btn_Defintion = new System.Windows.Forms.Button();
+            this.btn_Schreibmodus = new System.Windows.Forms.Button();
+            this.btn_Lernmodus = new System.Windows.Forms.Button();
+            this.btn_gemischt = new System.Windows.Forms.Button();
+            this.comBF_Lernset = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.comBF_Ordner = new System.Windows.Forms.ComboBox();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Begriff
+            // btn_Begriff
             // 
-            this.Begriff.Location = new System.Drawing.Point(123, 303);
-            this.Begriff.Name = "Begriff";
-            this.Begriff.Size = new System.Drawing.Size(112, 35);
-            this.Begriff.TabIndex = 0;
-            this.Begriff.Text = "Begriff";
-            this.Begriff.UseVisualStyleBackColor = true;
-            this.Begriff.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Begriff.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_Begriff.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Begriff.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_Begriff.Location = new System.Drawing.Point(569, 245);
+            this.btn_Begriff.Name = "btn_Begriff";
+            this.btn_Begriff.Size = new System.Drawing.Size(191, 54);
+            this.btn_Begriff.TabIndex = 0;
+            this.btn_Begriff.Text = "Definition";
+            this.btn_Begriff.UseVisualStyleBackColor = false;
+            this.btn_Begriff.Click += new System.EventHandler(this.Begriff_Click);
             // 
-            // Definition
+            // btn_Defintion
             // 
-            this.Definition.Location = new System.Drawing.Point(289, 303);
-            this.Definition.Name = "Definition";
-            this.Definition.Size = new System.Drawing.Size(112, 35);
-            this.Definition.TabIndex = 1;
-            this.Definition.Text = "Defintion";
-            this.Definition.UseVisualStyleBackColor = true;
-            this.Definition.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Defintion.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btn_Defintion.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_Defintion.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Defintion.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_Defintion.Location = new System.Drawing.Point(201, 245);
+            this.btn_Defintion.Name = "btn_Defintion";
+            this.btn_Defintion.Size = new System.Drawing.Size(194, 54);
+            this.btn_Defintion.TabIndex = 1;
+            this.btn_Defintion.Text = "Begriff";
+            this.btn_Defintion.UseVisualStyleBackColor = false;
+            this.btn_Defintion.Click += new System.EventHandler(this.Definition_Click);
             // 
-            // label1
+            // btn_Schreibmodus
             // 
-            this.label1.Location = new System.Drawing.Point(276, 260);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 21);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Antworten mit: ";
+            this.btn_Schreibmodus.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_Schreibmodus.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Schreibmodus.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_Schreibmodus.Location = new System.Drawing.Point(201, 145);
+            this.btn_Schreibmodus.Name = "btn_Schreibmodus";
+            this.btn_Schreibmodus.Size = new System.Drawing.Size(272, 54);
+            this.btn_Schreibmodus.TabIndex = 4;
+            this.btn_Schreibmodus.Text = "Schreibmodus";
+            this.btn_Schreibmodus.UseVisualStyleBackColor = false;
+            this.btn_Schreibmodus.Click += new System.EventHandler(this.Schreibmodus_Click);
             // 
-            // label2
+            // btn_Lernmodus
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(280, 162);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Modus wählen: ";
+            this.btn_Lernmodus.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_Lernmodus.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Lernmodus.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_Lernmodus.Location = new System.Drawing.Point(474, 145);
+            this.btn_Lernmodus.Name = "btn_Lernmodus";
+            this.btn_Lernmodus.Size = new System.Drawing.Size(286, 54);
+            this.btn_Lernmodus.TabIndex = 5;
+            this.btn_Lernmodus.Text = "Lernmodus";
+            this.btn_Lernmodus.UseVisualStyleBackColor = false;
+            this.btn_Lernmodus.Click += new System.EventHandler(this.Lernmodus_Click);
             // 
-            // Schreibmodus
+            // btn_gemischt
             // 
-            this.Schreibmodus.Location = new System.Drawing.Point(208, 202);
-            this.Schreibmodus.Name = "Schreibmodus";
-            this.Schreibmodus.Size = new System.Drawing.Size(143, 40);
-            this.Schreibmodus.TabIndex = 4;
-            this.Schreibmodus.Text = "Schreibmodus";
-            this.Schreibmodus.UseVisualStyleBackColor = true;
-            this.Schreibmodus.Click += new System.EventHandler(this.button3_Click);
+            this.btn_gemischt.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_gemischt.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_gemischt.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_gemischt.Location = new System.Drawing.Point(391, 245);
+            this.btn_gemischt.Name = "btn_gemischt";
+            this.btn_gemischt.Size = new System.Drawing.Size(182, 54);
+            this.btn_gemischt.TabIndex = 6;
+            this.btn_gemischt.Text = "gemischt";
+            this.btn_gemischt.UseVisualStyleBackColor = false;
+            this.btn_gemischt.Click += new System.EventHandler(this.Gemischt_Click);
             // 
-            // Lernmodus
+            // comBF_Lernset
             // 
-            this.Lernmodus.Location = new System.Drawing.Point(389, 202);
-            this.Lernmodus.Name = "Lernmodus";
-            this.Lernmodus.Size = new System.Drawing.Size(136, 40);
-            this.Lernmodus.TabIndex = 5;
-            this.Lernmodus.Text = "Lernmodus";
-            this.Lernmodus.UseVisualStyleBackColor = true;
-            this.Lernmodus.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // gemischt
-            // 
-            this.gemischt.Location = new System.Drawing.Point(456, 303);
-            this.gemischt.Name = "gemischt";
-            this.gemischt.Size = new System.Drawing.Size(118, 35);
-            this.gemischt.TabIndex = 6;
-            this.gemischt.Text = "gemischt";
-            this.gemischt.UseVisualStyleBackColor = true;
-            this.gemischt.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // comboBox_Ordner
-            // 
-            this.comboBox_Ordner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Ordner.FormattingEnabled = true;
-            this.comboBox_Ordner.Location = new System.Drawing.Point(87, 85);
-            this.comboBox_Ordner.Name = "comboBox_Ordner";
-            this.comboBox_Ordner.Size = new System.Drawing.Size(179, 28);
-            this.comboBox_Ordner.TabIndex = 7;
-            this.comboBox_Ordner.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ordner_SelectedIndexChanged);
-            // 
-            // comboBox_Lernset
-            // 
-            this.comboBox_Lernset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Lernset.FormattingEnabled = true;
-            this.comboBox_Lernset.Location = new System.Drawing.Point(404, 85);
-            this.comboBox_Lernset.Name = "comboBox_Lernset";
-            this.comboBox_Lernset.Size = new System.Drawing.Size(182, 28);
-            this.comboBox_Lernset.TabIndex = 8;
-            this.comboBox_Lernset.SelectedIndexChanged += new System.EventHandler(this.comboBox_Lernset_SelectedIndexChanged);
+            this.comBF_Lernset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBF_Lernset.FormattingEnabled = true;
+            this.comBF_Lernset.Location = new System.Drawing.Point(0, 271);
+            this.comBF_Lernset.Name = "comBF_Lernset";
+            this.comBF_Lernset.Size = new System.Drawing.Size(201, 28);
+            this.comBF_Lernset.TabIndex = 8;
+            this.comBF_Lernset.SelectedIndexChanged += new System.EventHandler(this.comboBox_Lernset_SelectedIndexChanged);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(109, 44);
+            this.label3.BackColor = System.Drawing.Color.LightSlateGray;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(0, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 20);
+            this.label3.Size = new System.Drawing.Size(201, 37);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Ordner auswählen";
+            this.label3.Text = "Ordner ";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(435, 44);
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(0, 238);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 20);
+            this.label4.Size = new System.Drawing.Size(195, 30);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Lernset wählen";
+            this.label4.Text = "Lernset";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panel1.Controls.Add(this.comBF_Lernset);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.comBF_Ordner);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(201, 411);
+            this.panel1.TabIndex = 11;
+            // 
+            // comBF_Ordner
+            // 
+            this.comBF_Ordner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBF_Ordner.FormattingEnabled = true;
+            this.comBF_Ordner.Location = new System.Drawing.Point(0, 145);
+            this.comBF_Ordner.Name = "comBF_Ordner";
+            this.comBF_Ordner.Size = new System.Drawing.Size(201, 28);
+            this.comBF_Ordner.TabIndex = 7;
+            this.comBF_Ordner.SelectedIndexChanged += new System.EventHandler(this.comboBox_Ordner_SelectedIndexChanged);
             // 
             // Startseite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox_Lernset);
-            this.Controls.Add(this.comboBox_Ordner);
-            this.Controls.Add(this.gemischt);
-            this.Controls.Add(this.Lernmodus);
-            this.Controls.Add(this.Schreibmodus);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Definition);
-            this.Controls.Add(this.Begriff);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(750, 411);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btn_gemischt);
+            this.Controls.Add(this.btn_Lernmodus);
+            this.Controls.Add(this.btn_Schreibmodus);
+            this.Controls.Add(this.btn_Defintion);
+            this.Controls.Add(this.btn_Begriff);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Startseite";
-            this.Text = "Form1";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button Begriff;
-        private System.Windows.Forms.Button Definition;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button Schreibmodus;
-        private System.Windows.Forms.Button Lernmodus;
-        private System.Windows.Forms.Button gemischt;
-        private System.Windows.Forms.ComboBox comboBox_Ordner;
-        private System.Windows.Forms.ComboBox comboBox_Lernset;
+        private System.Windows.Forms.Button btn_Begriff;
+        private System.Windows.Forms.Button btn_Defintion;
+        private System.Windows.Forms.Button btn_Schreibmodus;
+        private System.Windows.Forms.Button btn_Lernmodus;
+        private System.Windows.Forms.Button btn_gemischt;
+        private System.Windows.Forms.ComboBox comBF_Lernset;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox comBF_Ordner;
     }
 }

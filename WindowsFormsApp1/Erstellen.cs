@@ -1,298 +1,277 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.OleDb;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace WindowsFormsApp1
 {
     public partial class Erstellen : Form
     {
+        // Variable für das Basisverzeichnis
+        private string baseDirectory; 
+        //Eine Klasse, die eien Dialog anzeigt, mit dem der Benutzer einen Ordner auf dem Computer auswählen kann
+        private FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+        // Hier wird der string weg erstellt. Damit dort später Werte gespeichert werden können.
         string weg;
-        public Erstellen()
+        //Konstruktor
+        public Erstellen(string baseDirectory )
         {
+            //Initialisiert das Formular bzw. wichtige Komponente 
             InitializeComponent();
-            
-            LoadFolders();
-        }
-
-        private void laden()
-        {
 
 
-            dataGridView1.DataSource = vokLaden();
-            
-            
+            this.baseDirectory = baseDirectory;
 
         }
+        //neue Liste wird erstellt
+        List<string> lernset = new List<string>();
 
-        private List<Vok> JsonArray(string jsonData)
+        //Mit der folgenden Methode wird beim Klicken des Buttons. Das Erstellen Forms geschlossen
+        private void Schliessen_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(jsonData)) /*falls Datei leer ist, gibt es eine leere Liste zurück, wenn es ein [ hat dann wird 
-            es deserialized als eine Liste und sonst ist es ein einziges Objekt*/    
-            {
-                return new List<Vok>();
-            }
-            if (jsonData.Trim().StartsWith("["))
-            {
-                return JsonConvert.DeserializeObject<List<Vok>>(jsonData);
-            }
-            else
-            {
-                Vok vok = JsonConvert.DeserializeObject<Vok>(jsonData);
-                return new List<Vok> { vok };
-            }
-        }
-        private List<Vok> vokLaden()
-        {
-            string jsonData = File.ReadAllText(weg);
-            return JsonArray(jsonData);
+            this.Close();
+            Bearbeiten form = new Bearbeiten(baseDirectory);
+            form.Show();
         }
         
-        private void vokSpeichern(List<Vok>vokabeln)
+        //Methode wenn erstellenOrdner Button geklickt wurde.
+        private void btn_erstellenOrdner_Click(object sender, EventArgs e)
         {
-            string vokabelnJson = JsonConvert.SerializeObject(vokabeln);
-            File.WriteAllText(weg, vokabelnJson);
-        }
-
-        private List<Vok> vokabeln = new List<Vok>();
-        //l<Vok> nur Objekte aus Vok klasse
-        private void Speichern()
-        {
-            var Vok = new Vok() // obejekt erstellt... wie person abiran  = new person(), hier wird aber direkt der wert angegeben. 
+            //Zeigt eine Nachricht an und fragt den Nutzer, ob er ein neuen Ordner erstellen will. const steht für constant d.h der Wert kann nicht überschrieben werden.  
+            const string message =
+   "Wollen Sie ein neuen Ordner erstellen?";
+            //Eine Caption wird angezeigt (Form Closing)
+            const string caption = "Form Closing";
+            //Bei der MessageBox kann der Nutzer auswählen, ob er einen Ordner erstellen möchte (Ja, Nein)
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            // Wenn der Nutzer "Yes" gewählt hat- Überprüfung
+            if (result == DialogResult.Yes)
             {
-                Begriff = txtBegriff.Text,
-                Defintion = txtDefintion.Text,
-                Anz_Richtig_Falsch = 0
-            };
-            List<Vok> vokabeln_Sp = vokLaden();
-            dataGridView1.DataSource = vokabeln_Sp;
+
+                while (true)
+                {
+                    // In einer Inputbox kann der Nutzer den Namen des Ordners eintippen.
+                    string userInput = Interaction.InputBox("Bitte geben Sie den Namen des Ordners ein:", "Eingabeaufforderung", "Ordner1", -1, -1);
+                    // Falls die Eingabe leer ist, wird mit Break abgebrochen. 
+                    if (string.IsNullOrEmpty(userInput))
+                    {
+                        
+                        //Anzeige, dass kein Name eingeben wurde.
+                        MessageBox.Show("Kein Name eingegeben", "Abbruch", MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        break;
+                    }
+                    // Das ! ist für das Gegenteil da. D.h wenn es nicht leer ist, sollen diese Befehle ausgeführt werden.
+
+  
+                    if (!string.IsNullOrEmpty(userInput))
+                    {
+                        // Hier wird vorgegeben, wo es gespeichert werden soll.
+                        
+                        // Der entgültige Pfad wird mit der Location und dem erstellten Namen kombiniert.
+                        string path = System.IO.Path.Combine(baseDirectory, userInput);
+                        //Hier wird kontrolliert, ob es bereits einen solchen Ordner gibt.
+                        //Wenn nein, wird erfolgreich ein Ordner mit System.IO.Directory etc. erstellt. 
+                        if (!System.IO.Directory.Exists(path))
+                        {
+                            System.IO.Directory.CreateDirectory(path);
+                            
+                        MessageBox.Show("Erfolgreich einen Ordner erstellt");
+                            //schauen wenn es schon einen namen hat. 
+                            break;
+
+                        }
+
+                        // falls nicht...
+                        else
+                        {
+                            MessageBox.Show("Ein solcher Ordner existiert bereits.");
+                            break;
+
+                        }
 
 
-            vokabeln_Sp.Add(Vok);
-            string vokabeln1 = JsonConvert.SerializeObject(vokabeln_Sp); /* format indented macht die json datei kompakteer  */
-            File.WriteAllText(weg, vokabeln1);
+                    }
 
+                }
 
-
-            txtBegriff.Clear();
-            txtDefintion.Clear();
-
-            List<Vok> Ausgabe = vokLaden();
-            dataGridView1.DataSource = Ausgabe;
+            }
 
 
 
         }
-        private void button1_Click(object sender, EventArgs e)
+        
+        //Eine Methode, welche den Pfad des gewählten Ordner zurückgibt.
+        private string OpenFolderBrowser()
         {
-            
-            Speichern();
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                // Zeige den Ordnerauswahldialog an und überprüfe, ob der Benutzer einen Ordner ausgewählt hat.
+                DialogResult result = folderBrowserDialog.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
+                {
+                    // Gibt den ausgewählten Pfad zurück, wenn er gültig ist.
+                    return folderBrowserDialog.SelectedPath;
+                }
+                else
+                {
+                    // Gibt einen leeren String zurück, wenn kein Ordner ausgewählt wurde.
+                    return string.Empty;
+                }
 
 
-        }
-       
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-            dataGridView1.DataSource = vokLaden();
-
-        }
-
-        private void btnLöschen_Click(object sender, EventArgs e)
-        {
            
 
 
 
-                const string message =
-   "Are you sure that you would like to close the form?";
-                const string caption = "Form Closing";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
 
-                // If the no button was pressed ...
-                if (result == DialogResult.Yes)
-                {
-                    if (dataGridView1.SelectedRows.Count >= 0)
-                    {
-                        dataGridView1.MultiSelect = true;
-                         List<Vok> Laden_löschen = vokLaden();
-
-                        int selectedIndex = dataGridView1.SelectedRows[0].Index;
-                        Laden_löschen.RemoveAt(selectedIndex);
-                        string json = JsonConvert.SerializeObject(Laden_löschen); /* format indented macht die json datei kompakteer  */
-                        File.WriteAllText(weg, json);
-                        List<Vok> Laden = vokLaden();
-                        dataGridView1.DataSource = Laden;
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bitte wählen Sie eine Zeile aus, bevor Sie versuchen, sie zu löschen.");
-                    }
-
-
-                }
+            }
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        //Wenn ein Lernset neu erstellt werden soll.
+        private void btn_erstellenLernset_Click(object sender, EventArgs e)
         {
+
+            //Zeigt eine Nachricht an und fragt den Nutzer, ob er ein neuen Lernset erstellen will. const steht für constant d.h der Wert kann nicht überschrieben werden.
             const string message =
-       "Wollen Sie wirklich diese Zeile löschen?";
+  "Wollen Sie ein neuen Lernset erstellen?";
+            //Eine Caption für die MessageBox
             const string caption = "Form Closing";
+            //Bei der MessageBox kann der Nutzer auswählen, ob er einen Lernset erstellen möchte (Ja, Nein)
             var result = MessageBox.Show(message, caption,
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question);
-
-            // If the no button was pressed ...
+            //Überprüfen, ob "Yes" gewählt wurde"
             if (result == DialogResult.Yes)
             {
-                if (dataGridView1.SelectedRows.Count >= 0)
+                while (true)
                 {
-                    dataGridView1.MultiSelect = true;
-                    List<Vok> Laden_löschen = JsonConvert.DeserializeObject<List<Vok>>(File.ReadAllText(weg));
-
-                    int selectedIndex = dataGridView1.SelectedRows[0].Index;
-                    Laden_löschen.RemoveAt(selectedIndex);
-                    string json = JsonConvert.SerializeObject(Laden_löschen); /* format indented macht die json datei kompakteer  */
-                    File.WriteAllText(weg, json);
-                    List<Vok> Laden = JsonConvert.DeserializeObject<List<Vok>>(File.ReadAllText(weg));
-                    dataGridView1.DataSource = Laden;
-
-                }
-                else
-                {
-                    MessageBox.Show("Bitte wählen Sie eine Zeile aus, bevor Sie versuchen, sie zu löschen.");
-                }
-
-
-            }
-
-            }
-        
-
-        private void txtDefintion_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Return)
-            {
-                Speichern();
-                
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-            this.Hide();
-            Lernsets form = new Lernsets();
-            form.ShowDialog();
-
-        }
-        private void LoadFolders()
-        {
-            comboBoxLernset.Enabled = false;
-            string baseDirectory = @"C:\\Users\\Abira\\OneDrive\\Desktop\\MA_Daten";
-            if(Directory.Exists(baseDirectory))
-            {
-                var directories = Directory.GetDirectories(baseDirectory);  
-                foreach( var d in directories )
-                {
-                    comboBoxFolders.Items.Add(Path.GetFileName(d));
-                }
-            }
-            else
-            {
-                MessageBox.Show("Das Verzeichnis gibt es nicht.");
-            }
-        }
-
-        private void comboBoxFolders_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxFolders.SelectedItem != null)
-            {
-                comboBoxLernset.Items.Clear();
-                
-
-                comboBoxLernset.Enabled = true;
-                string selectedFolder = comboBoxFolders.SelectedItem.ToString();
-                Pfad(selectedFolder);
-
-                if (Directory.Exists(Pfad(selectedFolder)))
-                {
-                    var files = Directory.GetFiles(Pfad(selectedFolder));
-                    foreach (var f in files)
+                    //Der Nutzer soll den Namen eintippen.
+                    string userInput = Interaction.InputBox("Bitte geben Sie den Namen des Lernset ein:", "Eingabeaufforderung", "Lernset1", -1, -1);
+                    // Falls kein Name eingegeben wurde, wird abgrochen. 
+                    if (string.IsNullOrEmpty(userInput))
                     {
-                        comboBoxLernset.Items.Add(Path.GetFileName(f));
+                        // Eine Anzeige wird erstellt.
+                        MessageBox.Show("Kein Name eingegeben", "Abbruch", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                        // Schleife wird abgebrochen.
+                        { break; }
+
+                    }
+                    //Hier wird mit einer MessageBox gefragt, ob er es in einem Ordner speichern will.
+                    const string message1 =
+"Wollen Sie in einem Ordner speichern?";
+                    const string caption1 = "Form Closing";
+                    var result1 = MessageBox.Show(message1, caption1,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+                    if (result1 == DialogResult.Yes)
+                    {
+                       weg= OpenFolderBrowser();
+
+                    // wenn die Antwort nein ist. Wir ein Feld im Explorer geöffnet, wo man den gewünschten Ordner suchen kann.
+                        if (string.IsNullOrEmpty(weg ))
+                            {
+                            MessageBox.Show("Kein Ordner ausgewählt");
+
+                        }
+                        
+                        
+
+
+
+
+
+
+
+
+
+                    }
+                    if (result1 == DialogResult.No)
+
+                    {
+                        // Wenn nicht wird einfach dieser gewählte Pfad genommen.
+                        string basePath = Path.Combine(baseDirectory, "Basisordner");
+                        weg = basePath;
+
+
+
+                    }
+
+                    //Geprüft, ob ein Name eingegeben wurde.
+                    if (!string.IsNullOrEmpty(userInput))
+                    {
+                    // Dieser Befehl kombiniert einen fertigen Pfad mit dem eingegebenen Namen, und den vorgegebenen Pfad von oben inklusive mit dem json. Damit es sich dann um eine JSON Datei handelt.
+
+                        string file = System.IO.Path.Combine(weg, userInput + ".json");
+                        // Hier wird kontrolliert, ob ein solches Lernset bereits mit diesem Pfad exisiert.
+                        if (!System.IO.File.Exists(file))
+                        {
+                            using (var stream = System.IO.File.Create(file))
+                            {
+                             // Erstellt ein leeres JSON-Objekt ("{}") und wandelt es in ein Byte-Array um.
+                                byte[] content = new System.Text.UTF8Encoding(true).GetBytes("{}"); 
+                             // Schreibt das leere JSON-Objekt in die neu erstellte Datei.
+
+                                stream.Write(content, 0, content.Length);
+                            }
+
+
+                            //Hier wird ein neues Objekt der Klasse "Vok" erstellt-> zuweisung des Dateipfades
+                            // var wird verwendet um den Datentyp automatisch zu bestimmen. 
+                            var vok = new Vok()
+                            {
+                                Leer = file
+
+                            };
+                            // Erstellt eine neue Liste von "Vok"-Objekten und fügt das erstellte "Vok"-Objekt hinzu.
+                            List<Vok> voks = new List<Vok>();
+                            voks.Add(vok);
+                            //Nachricht, dass das Lernset erstellt wurde.
+                            MessageBox.Show("Erfolgreich ein Lernset erstellt");
+                            // Beendet die Schleife.
+                            break;
+
+                        }
+                        //Die Else-Bedingung bzw. diese MessageBox wird aufgerufen, wenn ein solches Lernset bereits existiert.
+                        else
+                        {
+                            MessageBox.Show("Ein solches Lernset existiert bereits.");
+                        }
+                    
                     }
                     
+
+
+
                 }
-                else
-                {
-                    MessageBox.Show("Der ausgewählte Ordner existiert nicht.");
+
+
                 }
-
-
-
 
             }
 
+        
 
-        }
-        string Pfad_neu;
-        private string Pfad(string selectedFolder)
-        {
-            string Lösung = Path.Combine(@"C:\Users\Abira\OneDrive\Desktop\MA_Daten", selectedFolder);
-            Pfad_neu = Lösung;
-            return Lösung;
-        }
-        private void comboBoxLernset_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxLernset.SelectedItem != null)
-            {
-                string selectedLernset = comboBoxLernset.SelectedItem.ToString();
-                Pfad_fertig(selectedLernset);
+      
+                }
             }
 
-        }
-        string Pfad_fertig1;
-        private string Pfad_fertig(string selectedLernset)
-        {
-            
 
-            string Lösung = Path.Combine(Pfad_neu, selectedLernset);
-            Pfad_fertig1 = Lösung;
-            return Lösung;
-
-        }
        
-
-
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-            weg = Pfad_fertig1;
-            laden();
-
-        }
-
-        private void start_Lernset_Click(object sender, EventArgs e)
-        {
-          
-                Startseite form = new Startseite();
-                this.Hide();
-                form.Show();
-            
-        }
-    }
-}

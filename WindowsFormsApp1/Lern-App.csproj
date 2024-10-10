@@ -12,7 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Abira\OneDrive\Desktop\Politik\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,10 +23,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -53,6 +54,18 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>63D8298CE247501DDD14543833D35547EECAE8C8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Prototyp1.0_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -71,17 +84,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Benutzeroberfläche.cs">
+    <Compile Include="Schreibmodus.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Benutzeroberfläche.Designer.cs">
-      <DependentUpon>Benutzeroberfläche.cs</DependentUpon>
+    <Compile Include="Schreibmodus.Designer.cs">
+      <DependentUpon>Schreibmodus.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lernsets.cs">
+    <Compile Include="Erstellen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lernsets.Designer.cs">
-      <DependentUpon>Lernsets.cs</DependentUpon>
+    <Compile Include="Erstellen.Designer.cs">
+      <DependentUpon>Erstellen.cs</DependentUpon>
     </Compile>
     <Compile Include="Lernmodus.cs">
       <SubType>Form</SubType>
@@ -96,25 +109,25 @@
       <DependentUpon>Startseite.cs</DependentUpon>
     </Compile>
     <Compile Include="Vok.cs" />
-    <Compile Include="Erstellen.cs">
+    <Compile Include="Bearbeiten.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Erstellen.Designer.cs">
-      <DependentUpon>Erstellen.cs</DependentUpon>
+    <Compile Include="Bearbeiten.Designer.cs">
+      <DependentUpon>Bearbeiten.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Benutzeroberfläche.resx">
-      <DependentUpon>Benutzeroberfläche.cs</DependentUpon>
+    <EmbeddedResource Include="Schreibmodus.resx">
+      <DependentUpon>Schreibmodus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Erstellen.resx">
-      <DependentUpon>Erstellen.cs</DependentUpon>
+    <EmbeddedResource Include="Bearbeiten.resx">
+      <DependentUpon>Bearbeiten.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lernmodus.resx">
       <DependentUpon>Lernmodus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lernsets.resx">
-      <DependentUpon>Lernsets.cs</DependentUpon>
+    <EmbeddedResource Include="Erstellen.resx">
+      <DependentUpon>Erstellen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -139,6 +152,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Prototyp1.0_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

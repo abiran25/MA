@@ -28,121 +28,193 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_schwierig = new System.Windows.Forms.Button();
+            this.btn_unmöglich = new System.Windows.Forms.Button();
+            this.btn_machbar = new System.Windows.Forms.Button();
+            this.btn_einfach = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Start = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.weiter = new System.Windows.Forms.Button();
+            this.btn_Start = new System.Windows.Forms.Button();
+            this.btn_Wörter = new System.Windows.Forms.Button();
+            this.btn_Weiter = new System.Windows.Forms.Button();
+            this.btn_Zurücksetzen = new System.Windows.Forms.Button();
+            this.progBar_Fortschritt = new System.Windows.Forms.ProgressBar();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Startseite = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_schwierig
             // 
-            this.button1.Location = new System.Drawing.Point(293, 337);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "schwierig";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_schwierig.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_schwierig.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_schwierig.Location = new System.Drawing.Point(494, 281);
+            this.btn_schwierig.Name = "btn_schwierig";
+            this.btn_schwierig.Size = new System.Drawing.Size(129, 79);
+            this.btn_schwierig.TabIndex = 0;
+            this.btn_schwierig.Text = "schwierig";
+            this.btn_schwierig.UseVisualStyleBackColor = true;
+            this.btn_schwierig.Click += new System.EventHandler(this.btn_schwierig_Click);
             // 
-            // button2
+            // btn_unmöglich
             // 
-            this.button2.Location = new System.Drawing.Point(140, 337);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 29);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "unmöglich";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_unmöglich.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_unmöglich.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_unmöglich.Location = new System.Drawing.Point(629, 282);
+            this.btn_unmöglich.Name = "btn_unmöglich";
+            this.btn_unmöglich.Size = new System.Drawing.Size(133, 79);
+            this.btn_unmöglich.TabIndex = 1;
+            this.btn_unmöglich.Text = "unmöglich";
+            this.btn_unmöglich.UseVisualStyleBackColor = true;
+            this.btn_unmöglich.Click += new System.EventHandler(this.btn_unmöglich_Click);
             // 
-            // button3
+            // btn_machbar
             // 
-            this.button3.Location = new System.Drawing.Point(439, 337);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 29);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "machbar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_machbar.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_machbar.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_machbar.Location = new System.Drawing.Point(355, 281);
+            this.btn_machbar.Name = "btn_machbar";
+            this.btn_machbar.Size = new System.Drawing.Size(133, 79);
+            this.btn_machbar.TabIndex = 2;
+            this.btn_machbar.Text = "machbar";
+            this.btn_machbar.UseVisualStyleBackColor = true;
+            this.btn_machbar.Click += new System.EventHandler(this.btn_machbar_Click);
             // 
-            // button4
+            // btn_einfach
             // 
-            this.button4.Location = new System.Drawing.Point(584, 337);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(92, 29);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "einfach";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btn_einfach.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_einfach.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_einfach.Location = new System.Drawing.Point(216, 281);
+            this.btn_einfach.Name = "btn_einfach";
+            this.btn_einfach.Size = new System.Drawing.Size(133, 79);
+            this.btn_einfach.TabIndex = 3;
+            this.btn_einfach.Text = "einfach";
+            this.btn_einfach.UseVisualStyleBackColor = true;
+            this.btn_einfach.Click += new System.EventHandler(this.btn_einfach_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(136, 182);
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(225, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.Size = new System.Drawing.Size(0, 30);
             this.label1.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(136, 234);
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(225, 166);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 20);
+            this.label3.Size = new System.Drawing.Size(0, 30);
             this.label3.TabIndex = 6;
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Start
+            // btn_Start
             // 
-            this.Start.Location = new System.Drawing.Point(604, 78);
-            this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(171, 33);
-            this.Start.TabIndex = 7;
-            this.Start.Text = "Starten";
-            this.Start.UseVisualStyleBackColor = true;
-            this.Start.Click += new System.EventHandler(this.Start_Click);
+            this.btn_Start.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Start.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_Start.Location = new System.Drawing.Point(0, 405);
+            this.btn_Start.Name = "btn_Start";
+            this.btn_Start.Size = new System.Drawing.Size(200, 33);
+            this.btn_Start.TabIndex = 7;
+            this.btn_Start.Text = "Starten";
+            this.btn_Start.UseVisualStyleBackColor = true;
+            this.btn_Start.Click += new System.EventHandler(this.Start_Click);
             // 
-            // button6
+            // btn_Wörter
             // 
-            this.button6.Location = new System.Drawing.Point(604, 12);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(171, 40);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "Wörter";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btn_Wörter.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_Wörter.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Wörter.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_Wörter.Location = new System.Drawing.Point(-3, 104);
+            this.btn_Wörter.Name = "btn_Wörter";
+            this.btn_Wörter.Size = new System.Drawing.Size(200, 40);
+            this.btn_Wörter.TabIndex = 9;
+            this.btn_Wörter.Text = "Bearbeiten";
+            this.btn_Wörter.UseVisualStyleBackColor = false;
+            this.btn_Wörter.Click += new System.EventHandler(this.btn_Wörter_Click_1);
             // 
-            // weiter
+            // btn_Weiter
             // 
-            this.weiter.Location = new System.Drawing.Point(140, 397);
-            this.weiter.Name = "weiter";
-            this.weiter.Size = new System.Drawing.Size(536, 41);
-            this.weiter.TabIndex = 10;
-            this.weiter.Text = "WEITER";
-            this.weiter.UseVisualStyleBackColor = true;
-            this.weiter.Click += new System.EventHandler(this.weiter_Click_1);
+            this.btn_Weiter.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Weiter.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btn_Weiter.Location = new System.Drawing.Point(216, 366);
+            this.btn_Weiter.Name = "btn_Weiter";
+            this.btn_Weiter.Size = new System.Drawing.Size(546, 72);
+            this.btn_Weiter.TabIndex = 10;
+            this.btn_Weiter.Text = "WEITER";
+            this.btn_Weiter.UseVisualStyleBackColor = true;
+            this.btn_Weiter.Click += new System.EventHandler(this.weiter_Click_1);
+            // 
+            // btn_Zurücksetzen
+            // 
+            this.btn_Zurücksetzen.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_Zurücksetzen.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Zurücksetzen.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btn_Zurücksetzen.Location = new System.Drawing.Point(0, 215);
+            this.btn_Zurücksetzen.Name = "btn_Zurücksetzen";
+            this.btn_Zurücksetzen.Size = new System.Drawing.Size(200, 32);
+            this.btn_Zurücksetzen.TabIndex = 12;
+            this.btn_Zurücksetzen.Text = "Zurücksetzen";
+            this.btn_Zurücksetzen.UseVisualStyleBackColor = false;
+            this.btn_Zurücksetzen.Click += new System.EventHandler(this.Zurücksetzen_Click);
+            // 
+            // progBar_Fortschritt
+            // 
+            this.progBar_Fortschritt.Location = new System.Drawing.Point(618, 24);
+            this.progBar_Fortschritt.Name = "progBar_Fortschritt";
+            this.progBar_Fortschritt.Size = new System.Drawing.Size(170, 26);
+            this.progBar_Fortschritt.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panel1.Controls.Add(this.Startseite);
+            this.panel1.Controls.Add(this.btn_Wörter);
+            this.panel1.Controls.Add(this.btn_Start);
+            this.panel1.Controls.Add(this.btn_Zurücksetzen);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(198, 450);
+            this.panel1.TabIndex = 16;
+            // 
+            // Startseite
+            // 
+            this.Startseite.BackColor = System.Drawing.Color.AliceBlue;
+            this.Startseite.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Startseite.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.Startseite.Location = new System.Drawing.Point(0, 156);
+            this.Startseite.Name = "Startseite";
+            this.Startseite.Size = new System.Drawing.Size(200, 40);
+            this.Startseite.TabIndex = 13;
+            this.Startseite.Text = "Startseite";
+            this.Startseite.UseVisualStyleBackColor = false;
+            this.Startseite.Click += new System.EventHandler(this.Startseite_Click);
             // 
             // Lernmodus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.weiter);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.Start);
+            this.Controls.Add(this.progBar_Fortschritt);
+            this.Controls.Add(this.btn_Weiter);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_einfach);
+            this.Controls.Add(this.btn_machbar);
+            this.Controls.Add(this.btn_unmöglich);
+            this.Controls.Add(this.btn_schwierig);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Lernmodus";
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Lernmodus_Load);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,14 +222,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_schwierig;
+        private System.Windows.Forms.Button btn_unmöglich;
+        private System.Windows.Forms.Button btn_machbar;
+        private System.Windows.Forms.Button btn_einfach;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button Start;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button weiter;
+        private System.Windows.Forms.Button btn_Start;
+        private System.Windows.Forms.Button btn_Wörter;
+        private System.Windows.Forms.Button btn_Weiter;
+        private System.Windows.Forms.Button btn_Zurücksetzen;
+        private System.Windows.Forms.ProgressBar progBar_Fortschritt;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button Startseite;
     }
 }
