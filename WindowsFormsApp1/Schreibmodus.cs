@@ -454,7 +454,7 @@ namespace WindowsFormsApp1
                     Forschritt_berechnen();
                     aktualisierenJson();
              
-                    new_words_Def();
+                    new_words_mix();
 
                 }
                 else
@@ -467,7 +467,7 @@ namespace WindowsFormsApp1
                         if (txtB_Antwort.Text == Wort.Defintion)
                         {
                             versuche = 0;
-                            new_words_Def();
+                            new_words_mix();
 
                         }
                     }
