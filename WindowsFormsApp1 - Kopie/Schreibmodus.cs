@@ -387,7 +387,7 @@ namespace WindowsFormsApp1
         //Ähnlicher Aufbau wie bei Check_def
         private void Check_mix()
         {
-            if (z == 2)
+            if (z == 1)
             {
                 if (txtB_Antwort.Text.Trim().Equals(Wort.Begriff.Trim(), StringComparison.OrdinalIgnoreCase))
                 {
@@ -397,7 +397,7 @@ namespace WindowsFormsApp1
 
                     aktualisierenJson();
                     Forschritt_berechnen();
-                    new_words_mix();
+                    new_words_Beg();
 
                 }
                 else
@@ -408,7 +408,7 @@ namespace WindowsFormsApp1
                         if (txtB_Antwort.Text == Wort.Begriff)
                         {
                             versuche = 0;
-                            new_words_mix();
+                            new_words_Beg();
                         }
                     }
                     if (versuche == 1)
@@ -439,7 +439,7 @@ namespace WindowsFormsApp1
                 }
 
             }
-            if (z == 1)
+            if (z == 2)
             {
 
                 if (txtB_Antwort.Text.Trim().Equals(Wort.Defintion.Trim(), StringComparison.OrdinalIgnoreCase))

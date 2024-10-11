@@ -73,7 +73,8 @@ namespace WindowsFormsApp1
 
             
             
-               
+                btn_Speichern.Enabled = true;   
+
 
             //  Liest alles was in der JSON_Datei steht
             string jsonData = File.ReadAllText(weg);
@@ -256,7 +257,6 @@ namespace WindowsFormsApp1
                 weg = Pfad_fertig1;
                 // die Methode laden() wird ausgeführt.D.h Datagridview wird geladen.
                 laden();
-                btn_Speichern.Enabled = true;
 
             }
             else

@@ -48,7 +48,6 @@ namespace WindowsFormsApp1
         //Startseite Button
         private void Startseite_Click(object sender, EventArgs e)
         {
-            this.Close();
             Startseite form = new Startseite(); 
             form.Show();
 
