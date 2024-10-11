@@ -391,21 +391,26 @@ namespace WindowsFormsApp1
             {
                 if (txtB_Antwort.Text.Trim().Equals(Wort.Begriff.Trim(), StringComparison.OrdinalIgnoreCase))
                 {
-                    txtB_Antwort.Clear();
+                  
+                  
                     versuche = 0;
                     Wort.Punkt_Mix += 1;
-
                     aktualisierenJson();
                     Forschritt_berechnen();
-                    new_words_mix();
 
+
+                    new_words_mix();
+                    if (!string.IsNullOrWhiteSpace(txtB_Antwort.Text))
+                    {
+                        txtB_Antwort.Clear();
+                    }
                 }
                 else
                 {
                     if (versuche >= 2)
                     {
                         MessageBox.Show(Wort.Begriff);
-                        if (txtB_Antwort.Text == Wort.Begriff)
+                        if (txtB_Antwort.Text.Trim().Equals(Wort.Begriff.Trim(), StringComparison.OrdinalIgnoreCase))
                         {
                             versuche = 0;
                             new_words_mix();
@@ -425,13 +430,19 @@ namespace WindowsFormsApp1
 
                     if (versuche == 0)
                     {
-                        MessageBox.Show("Falsch. Versuche es nochmal");
+                        if (!string.IsNullOrWhiteSpace(txtB_Antwort.Text))
+                        {
+                            txtB_Antwort.Clear();
+                            MessageBox.Show("Falsch. Versuche es nochmal");
 
-                        Wort.Punkt_Mix -= 2;
+                            Wort.Punkt_Mix -= 2;
 
-                        aktualisierenJson();
-                        Forschritt_berechnen();
-                        versuche++;
+                            aktualisierenJson();
+                            Forschritt_berechnen();
+                            versuche++;
+                        }
+                       
+                        
 
 
                     }
@@ -441,69 +452,75 @@ namespace WindowsFormsApp1
             }
             if (z == 1)
             {
-
+                
                 if (txtB_Antwort.Text.Trim().Equals(Wort.Defintion.Trim(), StringComparison.OrdinalIgnoreCase))
                 {
-                 
-                    txtB_Antwort.Clear();
-               
+                   
+                   
                     versuche = 0;
-                 
                     Wort.Punkt_Mix += 1;
 
-                    Forschritt_berechnen();
                     aktualisierenJson();
-             
+                    Forschritt_berechnen();
                     new_words_mix();
-
+                    if (!string.IsNullOrWhiteSpace(txtB_Antwort.Text))
+                    {
+                        txtB_Antwort.Clear();
+                    }
                 }
                 else
                 {
-
                     if (versuche >= 2)
                     {
                         MessageBox.Show(Wort.Defintion);
-
-                        if (txtB_Antwort.Text == Wort.Defintion)
+                        if (txtB_Antwort.Text.Trim().Equals(Wort.Defintion.Trim(), StringComparison.OrdinalIgnoreCase))
                         {
                             versuche = 0;
                             new_words_mix();
-
                         }
                     }
-                    
                     if (versuche == 1)
                     {
-                      
                         MessageBox.Show("Falsch. Versuche es nochmal");
-                        
+
                         Wort.Punkt_Mix -= 1;
-                        
+
                         aktualisierenJson();
                         Forschritt_berechnen();
                         versuche++;
-
 
                     }
 
-
-                   
                     if (versuche == 0)
+
                     {
-                    
-                        MessageBox.Show("Falsch. Versuche es nochmal");
-                      
-                        Wort.Punkt_Mix -= 2;
+                        if (!string.IsNullOrWhiteSpace(txtB_Antwort.Text))
+                        {
+                            txtB_Antwort.Clear();
+                            MessageBox.Show("Falsch. Versuche es nochmal");
+
+                            Wort.Punkt_Mix -= 2;
+
+                            aktualisierenJson();
+                            Forschritt_berechnen();
+                            versuche++;
+                        }
+
+
+
                        
-                        aktualisierenJson();
-                        Forschritt_berechnen();
-                        versuche++;
-                      
 
 
                     }
 
                 }
+
+
+
+
+
+
+
             }
         }
         //Falls enter gedrückt wird, wird jenachdem welcher Modus bzw. Begrif/Definition/Mix gelernt wird-> die entsprechende Methode ausgeführt.
