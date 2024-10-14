@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
                     {
                         // Wenn kein Ordner ausgewählt wurde, wird gefrogt, ob das Prgramm geschlossen werden soll.
                         MessageBox.Show("Keinen Ordner ausgewählt");
-                        const string message = "Wollen Sie das Programm schließen?";
+                        const string message = "Wollen Sie das Programm schliessen?";
                         const string caption = "Form Closing";
                         var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         //Falls ja wird das Programm geschlossen
